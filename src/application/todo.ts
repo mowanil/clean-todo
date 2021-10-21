@@ -19,7 +19,7 @@ export class DBTodoFind implements TodoFind {
     ) {}
 
     async find(word: string): Promise<Todo[] | null> {
-        const result = this.todoRepo.find(word)
+        const result = await this.todoRepo.find(word)
         if (result) return result;
 
         return null 
@@ -32,7 +32,7 @@ export class DBTodoCreate implements TodoCreate {
     ) {}
 
     async create(model: Todo): Promise<boolean> {
-        return this.todoRepo.create(model)
+        return await this.todoRepo.create(model)
     }
 }
 
@@ -42,6 +42,6 @@ export class DBTodoUpdate implements TodoUpdate {
     ) {}
 
     async update(model: Todo): Promise<void> {
-        this.todoRepo.update(model)
+        await this.todoRepo.update(model)
     }
 }
